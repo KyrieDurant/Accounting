@@ -9,6 +9,9 @@ const app = new Vue({
   ...App
 })
 app.$mount()
+// main.js 文件
+import uView from "uview-ui";
+Vue.use(uView);
 // #endif
 
 // #ifdef VUE3
