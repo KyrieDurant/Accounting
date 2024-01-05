@@ -19,10 +19,11 @@
 					<div>{{ item.name }}</div>
 				</div>
 			</scroll-view>
-			<!-- <scroll-view scroll-x style="white-space: nowrap;">
-				<view class="atimeBtn" v-for="(item, index) in items" :key="index">{{ item }}</view>
-			</scroll-view> -->
 		</view>
+		<view class="chartBox"></view>
+		<view class="minTitle">支出占比</view>
+		<view class="chartBox1"></view>
+		<view class="minTitle">支出排行</view>
 	</view>
 </template>
 
@@ -214,5 +215,24 @@
 				coloe: #969696;
 			}
 		}
+	}
+	.chartBox{
+		width: 100%;
+		height: 350rpx;
+		background-color: rgba(69, 198, 151, 0.5);
+	}
+	.minTitle{
+		width: 100%;
+		height: 60rpx;
+		background: #efefef;
+		text-align: left;
+		font-size: 30rpx;
+		text-indent: 20rpx;
+		line-height: 60rpx;
+	}
+	.chartBox1{
+		width: 100%;
+		height: 400rpx;
+		background-color: rgba(69, 198, 151, 0.5);
 	}
 </style>
