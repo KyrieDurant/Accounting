@@ -13,7 +13,7 @@
 			</div>
 		</view>
 		<view class="threeLayer">
-			<scroll-view class="scroll-view_H" scroll-x="true" @scroll="scroll" scroll-left="0">
+			<scroll-view class="scroll-view_H" :scroll-x="true" scroll-left="0">
 				<div v-for="(item, index) in timeList" :key="index" @click="selectTime(index, item)"
 					:class="timeColor == index ? 'btnBox' : 'btnBox1'">
 					<div>{{ item.name }}</div>
@@ -21,9 +21,14 @@
 			</scroll-view>
 		</view>
 		<view class="fourLayer">
-			<view class="chartBox"></view>
+			<view class="chartBox">
+				<bar-chart class="mybar" ref="rainchartRef" :xAxisData="xAxisData" :chartData="chartData"></bar-chart>
+			</view>
 			<view class="minTitle">支出占比</view>
-			<view class="chartBox1"></view>
+			<view class="chartBox1">
+				<CircularPieChart :chart-data="eventData2" :colors="eventColors2" :legend-location="location2">
+				</CircularPieChart>
+			</view>
 			<view class="minTitle">支出排行</view>
 			<view class="getMoney">
 				<view class="codeBox" v-for="(item,index) in timeData" :key="index">
@@ -51,6 +56,8 @@
 		ref,
 		onMounted
 	} from 'vue';
+	import barChart from "../../components/charts/barChart.vue"
+	import CircularPieChart from "../../components/charts/CircularPieChart.vue"
 
 	const moneyType = ref([{
 			name: '支出',
@@ -133,6 +140,36 @@
 		defaultTime.value = item.name
 	}
 
+	const xAxisData = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+		25, 26, 27, 28, 29, 30
+	])
+	const chartData = ref([10, 20, 30, 35, 50, 40, 33, 15])
+
+	//出团人数分析
+	const eventData2 = ref([{
+			name: "0-3人",
+			value: 90,
+		},
+		{
+			name: "4-6人",
+			value: 100,
+		},
+		{
+			name: "7-9人",
+			value: 110,
+		},
+		{
+			name: "10人及以上",
+			value: 100,
+		},
+	]);
+	const location2 = ref({
+		right: 30,
+		bottom: 20
+	}) // 图例的位置
+	const eventColors2 = ref(["#88edff", "#8AA2DC", "#FDDB7A", "#E16243"]);
+
+
 	const timeData = ref([{
 			showImg: '',
 			type: '交通',
@@ -158,6 +195,8 @@
 			money: '-11.00'
 		},
 	])
+
+	const rainchartRef = ref(null)
 </script>
 
 <style lang="scss" scoped>
@@ -280,8 +319,15 @@
 	.chartBox {
 		width: 100%;
 		height: 300rpx;
-		background-color: rgba(69, 198, 151, 0.5);
+		// background-color: rgba(69, 198, 151, 0.5);
 		// margin-top: 200rpx;
+	}
+
+	.mybar {
+		/* background-color: rgba(60, 198, 233, 0.2); */
+		width: 100%;
+		/* height: 100%; */
+		height: 300rpx;
 	}
 
 	.minTitle {
@@ -297,7 +343,7 @@
 	.chartBox1 {
 		width: 100%;
 		height: 350rpx;
-		background-color: rgba(69, 198, 151, 0.5);
+		// background-color: rgba(69, 198, 151, 0.5);
 	}
 
 	.getMoney {
