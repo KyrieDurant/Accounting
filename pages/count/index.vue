@@ -20,10 +20,29 @@
 				</div>
 			</scroll-view>
 		</view>
-		<view class="chartBox"></view>
-		<view class="minTitle">支出占比</view>
-		<view class="chartBox1"></view>
-		<view class="minTitle">支出排行</view>
+		<view class="fourLayer">
+			<view class="chartBox"></view>
+			<view class="minTitle">支出占比</view>
+			<view class="chartBox1"></view>
+			<view class="minTitle">支出排行</view>
+			<view class="getMoney">
+				<view class="codeBox" v-for="(item,index) in timeData" :key="index">
+					<view class="leftCont">
+						<view class="costImg">
+							<image src="../../static/image/bill/account-book.png" mode="aspectFit"
+								style=" width: 60rpx;">
+							</image>
+						</view>
+						<view class="costCont">
+							<span class="contType">{{item.type}}</span>
+							<span class="contDetile">{{item.detile}}</span>
+						</view>
+					</view>
+					<span style="padding-right: 2%;">{{ item.money }}</span>
+				</view>
+			</view>
+		</view>
+
 	</view>
 </template>
 
@@ -114,18 +133,42 @@
 		defaultTime.value = item.name
 	}
 
-	const items = ref(['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9',
-		'Item 10'
+	const timeData = ref([{
+			showImg: '',
+			type: '交通',
+			detile: '杭州-德清',
+			money: '-12.00'
+		},
+		{
+			showImg: '',
+			type: '餐饮',
+			detile: '焖面',
+			money: '-17.00'
+		},
+		{
+			showImg: '',
+			type: '餐饮',
+			detile: '沙县小吃',
+			money: '-15.00'
+		},
+		{
+			showImg: '',
+			type: '水果',
+			detile: '橘子',
+			money: '-11.00'
+		},
 	])
 </script>
 
 <style lang="scss" scoped>
 	page {
 		background: #fdfdfd;
+		height: 100%;
 	}
 
 	.content {
 		width: 100%;
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		color: #313131;
@@ -139,6 +182,8 @@
 		justify-content: center;
 		align-items: center;
 		font-size: 30rpx;
+		position: fixed;
+		z-index: 7;
 
 		.btnBox {
 			width: 180rpx;
@@ -168,6 +213,9 @@
 		align-items: center;
 		font-size: 30rpx;
 		margin-top: 20rpx;
+		position: fixed;
+		top: 80rpx;
+		z-index: 7;
 
 		.btnBox {
 			width: 130rpx;
@@ -195,7 +243,9 @@
 		height: 60rpx;
 		display: flex;
 		background: #efefef;
-		margin-top: 20rpx;
+		position: fixed;
+		top: 180rpx;
+		z-index: 7;
 
 		.scroll-view_H {
 			white-space: nowrap;
@@ -216,12 +266,25 @@
 			}
 		}
 	}
-	.chartBox{
+
+	.fourLayer {
+		flex: 1;
 		width: 100%;
-		height: 350rpx;
-		background-color: rgba(69, 198, 151, 0.5);
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		top: 240rpx;
 	}
-	.minTitle{
+
+	.chartBox {
+		width: 100%;
+		height: 300rpx;
+		background-color: rgba(69, 198, 151, 0.5);
+		// margin-top: 200rpx;
+	}
+
+	.minTitle {
 		width: 100%;
 		height: 60rpx;
 		background: #efefef;
@@ -230,9 +293,60 @@
 		text-indent: 20rpx;
 		line-height: 60rpx;
 	}
-	.chartBox1{
+
+	.chartBox1 {
 		width: 100%;
-		height: 400rpx;
+		height: 350rpx;
 		background-color: rgba(69, 198, 151, 0.5);
+	}
+
+	.getMoney {
+		width: 100%;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.codeBox {
+		height: 100rpx;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: #ffffff;
+		border-bottom: 1rpx solid #dedede;
+		flex-shrink: 0;
+
+		.leftCont {
+			display: flex;
+			align-items: center;
+
+			.costImg {
+				width: 80rpx;
+				height: 80rpx;
+				background-color: #dddddd;
+				border-radius: 50%;
+				margin-left: 20rpx;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.costCont {
+				height: 100%;
+				margin-left: 30rpx;
+				display: flex;
+				flex-direction: column;
+
+				.contType {
+					font-size: 30rpx;
+				}
+
+				.contDetile {
+					font-size: 20rpx;
+					margin-top: 5rpx;
+				}
+			}
+		}
 	}
 </style>
