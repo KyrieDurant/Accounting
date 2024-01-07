@@ -26,8 +26,9 @@
 			</view>
 			<view class="minTitle">支出占比</view>
 			<view class="chartBox1">
-				<CircularPieChart :chart-data="eventData2" :colors="eventColors2" :legend-location="location2">
-				</CircularPieChart>
+				<!-- <CircularPieChart :chart-data="eventData2" :colors="eventColors2" :legend-location="location2">
+				</CircularPieChart> -->
+				<roseChart></roseChart>
 			</view>
 			<view class="minTitle">支出排行</view>
 			<view class="getMoney">
@@ -58,6 +59,7 @@
 	} from 'vue';
 	import barChart from "../../components/charts/barChart.vue"
 	import CircularPieChart from "../../components/charts/CircularPieChart.vue"
+	import roseChart from "../../components/charts/roseChart.vue"
 
 	const moneyType = ref([{
 			name: '支出',
@@ -282,8 +284,8 @@
 		height: 60rpx;
 		display: flex;
 		background: #efefef;
-		position: fixed;
-		top: 180rpx;
+		// position: fixed;
+		margin-top: 180rpx;
 		z-index: 7;
 
 		.scroll-view_H {
