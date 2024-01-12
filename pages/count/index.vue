@@ -93,10 +93,6 @@
 		defaultDate.value = item.name
 	}
 
-	function scrool(e) {
-		console.log('滑动', e)
-	}
-
 	const timeList = ref([{
 			name: '2022-12',
 		},

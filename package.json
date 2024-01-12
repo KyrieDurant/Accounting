@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "echarts": "^5.4.3",
-    "uview-ui": "^2.0.36"
+    "echarts": "^5.4.3"
   }
 }

@@ -57,11 +57,6 @@
 				</view>
 			</view>
 		</view>
-		<u-popup v-model="show" mode="bottom" width="100%" height="300rpx">
-			<view>
-				骊山语罢清宵半，泪雨霖铃终不怨
-			</view>
-		</u-popup>
 		<view class="plus"></view>
 
 	</view>
@@ -108,6 +103,11 @@
 			},
 		]
 	}, ])
+	
+	
+	onMounted(()=>{
+		
+	})
 </script>
 
 <style lang="scss" scoped>

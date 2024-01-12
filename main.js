@@ -10,9 +10,7 @@ const app = new Vue({
 	...App
 })
 app.$mount()
-// 引入uview
-import uView from "uview-ui";
-Vue.use(uView);
+
 // #endif
 
 // #ifdef VUE3
